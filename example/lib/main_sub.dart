@@ -37,7 +37,7 @@ void main() {
               Expanded(
                   child: Navigator(
                 onDidRemovePage: (page) {},
-                pages: const [
+                pages: [
                   MaterialPage(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,24 +46,55 @@ void main() {
                         children: [
                           ElTooltip(
                             content: tooltipContent,
-                            color: Color(0XFFEA4747),
+                            color: const Color(0XFFEA4747),
+                            showModal: false,
                             child: tooltipIcon,
+                            arrowWrapBuilder: (context, child) {
+                              return Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      offset: Offset(0, 2),
+                                      blurRadius: 5,
+                                      spreadRadius: 0,
+                                    ),
+                                  ],
+                                ),
+                                child: child!,
+                              );
+                            },
+                            contentWrapBuilder: (context, child) {
+                              return Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      offset: Offset(1, 2),
+                                      blurRadius: 5,
+                                      spreadRadius: 2,
+                                    ),
+                                  ],
+                                ),
+                                child: child!,
+                              );
+                            },
                           ),
-                          Spacer(),
-                          ElTooltip(
+                          const Spacer(),
+                          const ElTooltip(
                             content: tooltipContent,
                             color: Color(0XFFEA4747),
                             child: tooltipIcon,
                           ),
-                          Spacer(),
-                          ElTooltip(
+                          const Spacer(),
+                          const ElTooltip(
                             content: tooltipContent,
                             color: Color(0XFFEA4747),
                             child: tooltipIcon,
                           ),
                         ],
                       ),
-                      Row(
+                      const Row(
                         children: [
                           ElTooltip(
                             content: tooltipContent,
@@ -84,7 +115,7 @@ void main() {
                           ),
                         ],
                       ),
-                      Row(
+                      const Row(
                         children: [
                           ElTooltip(
                             content: tooltipContent,
