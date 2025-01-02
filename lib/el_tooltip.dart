@@ -32,6 +32,7 @@ class ElTooltip extends StatefulWidget {
     this.showModal = true,
     this.showArrow = true,
     this.showChildAboveOverlay = true,
+    this.rootOverlay = true,
     this.modalConfiguration = const ModalConfiguration(),
     this.timeout = Duration.zero,
     this.appearAnimationDuration = Duration.zero,
@@ -70,6 +71,9 @@ class ElTooltip extends StatefulWidget {
 
   /// [showChildAboveOverlay] Shows the child above the overlay.
   final bool showChildAboveOverlay;
+
+  /// [rootOverlay] If true, the overlay will be added to the root overlay.
+  final bool rootOverlay;
 
   /// [timeout] Timeout until the tooltip disappears automatically
   /// The default value is 0 (zero) which means it never disappears.
@@ -154,7 +158,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
 
   /// Loads the tooltip without opacity to measure the rendered size
   void _loadHiddenOverlay(_) {
-    OverlayState? overlayStateHidden = Overlay.of(context);
+    OverlayState? overlayStateHidden = Overlay.of(context, rootOverlay: widget.rootOverlay);
     _overlayEntryHidden = OverlayEntry(
       builder: (context) {
         WidgetsBinding.instance
@@ -212,7 +216,7 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     setState(() => initial = true);
 
     context ??= this.context;
-    final overlayState = Overlay.of(context);
+    final overlayState = Overlay.of(context, rootOverlay: widget.rootOverlay);
 
     /// By calling [PositionManager.load()] we get returned the position
     /// of the tooltip, the arrow and the trigger.
