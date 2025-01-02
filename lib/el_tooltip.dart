@@ -38,6 +38,8 @@ class ElTooltip extends StatefulWidget {
     this.appearAnimationDuration = Duration.zero,
     this.disappearAnimationDuration = Duration.zero,
     this.controller,
+    this.arrowWrapBuilder,
+    this.contentWrapBuilder,
     super.key,
   });
 
@@ -93,6 +95,12 @@ class ElTooltip extends StatefulWidget {
 
   /// [controller] Controller that allows to show or hide the tooltip
   final ElTooltipController? controller;
+
+  /// [arrowWrapBuilder] Builder that wraps the arrow
+  final TransitionBuilder? arrowWrapBuilder;
+
+  /// [contentWrapBuilder] Builder that wraps the content
+  final TransitionBuilder? contentWrapBuilder;
 
   @override
   State<ElTooltip> createState() => _ElTooltipState();
@@ -247,6 +255,8 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
         showModal: widget.showModal,
         appearAnimationDuration: widget.appearAnimationDuration,
         disappearAnimationDuration: widget.disappearAnimationDuration,
+        arrowWrapBuilder: widget.arrowWrapBuilder,
+        contentWrapBuilder: widget.contentWrapBuilder,
         child: widget.child,
       ),
     );
