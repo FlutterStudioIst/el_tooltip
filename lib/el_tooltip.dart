@@ -146,6 +146,12 @@ class _ElTooltipState extends State<ElTooltip> with WidgetsBindingObserver {
     widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
   }
 
+  @override
+  void didUpdateWidget(covariant ElTooltip oldWidget) {
+    widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
+    super.didUpdateWidget(oldWidget);
+  }
+
   ElementBox get _screenSize => _getScreenSize();
 
   ElementBox get _triggerBox => _getTriggerSize();
